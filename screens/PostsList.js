@@ -31,7 +31,8 @@ const PostsList = ({ navigation, user, setUser }) => {
     }, [])
   );
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await AsyncStorage.removeItem('user');
     setUser(null);
     navigation.navigate('Login');
   };
@@ -70,7 +71,7 @@ const PostsList = ({ navigation, user, setUser }) => {
 
   return (
     <View style={styles.container}>
-      <Button title="Logout" onPress={handleLogout} />
+      {user && <Button title="Logout" onPress={handleLogout} />}
       <FlatList
         data={postsData}
         keyExtractor={item => item.id}
