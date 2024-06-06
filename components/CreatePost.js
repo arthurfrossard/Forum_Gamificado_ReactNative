@@ -24,7 +24,7 @@ const CreatePost = ({ navigation, user }) => {
         body: JSON.stringify(newPost),
       });
 
-      navigation.navigate('PostsList');
+      navigation.navigate('Home');
     } catch (error) {
       console.error('Erro ao criar post:', error);
     }
